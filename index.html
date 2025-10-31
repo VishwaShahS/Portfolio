@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Vishwa Shah | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --accent:#ffd54f;
+    --purple-1:#5b2cc3;
+    --purple-2:#b051a8;
+    --bg-dark:#2b0f3d;
+    --muted: rgba(255,255,255,0.88);
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+    color:#fff;
+    background: linear-gradient(135deg,var(--purple-1),var(--purple-2));
+    -webkit-font-smoothing:antialiased;
+    scroll-behavior:smooth;
+  }
+
+  header{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 28px;background:rgba(0,0,0,0.12);backdrop-filter:blur(6px);
+  }
+  header .title{font-weight:700}
+  header nav a{color:rgba(255,255,255,0.95);text-decoration:none;margin-left:16px;font-weight:600}
+  header nav a:hover{text-decoration:underline}
+
+  .wrap{max-width:1100px;margin:28px auto;padding:0 18px}
+
+  .hero{
+    display:flex;gap:28px;align-items:center;
+    background:linear-gradient(90deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    padding:32px;border-radius:14px;box-shadow:0 12px 36px rgba(0,0,0,0.25);
+  }
+  .hero-left{flex:1;min-width:260px}
+  .hero-left h1{font-size:40px;margin:0 0 8px;line-height:1.02}
+  .hero-left .name{color:var(--accent);font-weight:800}
+  .hero-left h3{margin:6px 0 16px;color:rgba(255,255,255,0.92);font-weight:600}
+  .hero-left p{color:rgba(255,255,255,0.9);max-width:700px;margin:0 0 16px}
+  .cta-row{display:flex;gap:12px;margin-top:6px}
+  .btn{
+    display:inline-block;padding:10px 14px;border-radius:10px;font-weight:700;text-decoration:none;
+  }
+  .btn.primary{background:var(--accent);color:#111}
+  .btn.ghost{background:transparent;border:2px solid var(--accent);color:var(--accent)}
+  .btn.ghost:hover{background:var(--accent);color:#111;transition:0.2s ease}
+  .hero-right{width:320px;flex-shrink:0;display:flex;justify-content:center;align-items:center}
+  .profile-oval{
+    width:220px;height:220px;border-radius:50%;overflow:hidden;border:6px solid rgba(255,255,255,0.08);
+    box-shadow:0 18px 36px rgba(0,0,0,0.45);background:transparent;
+  }.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.hero-img {
+  width: 320px; /* Try between 250px–350px */
+  height: auto;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+.hero-img:hover {
+  transform: scale(1.05);
+}
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+  .hero-img {
+    width: 220px;
+    margin-top: 1.5rem;
+  }
+}
+  section{margin-top:28px;padding:22px;border-radius:12px;background:rgba(255,255,255,0.02)}
+  section h2{margin:0 0 14px;color:#fff;text-align:left}
+
+  .about p{color:rgba(255,255,255,0.92);line-height:1.6;margin:8px 0}
+
+  /* TECH */
+  .tech-group{margin-bottom:22px}
+  .tech-group h3{color:var(--accent);margin-bottom:10px}
+  .tech-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:14px;margin-top:12px}
+  .tech-item{text-align:center}
+  .tech-item img{width:52px;height:52px;background:#fff;padding:6px;border-radius:8px;margin-bottom:6px}
+  .tech-item .label{font-weight:700;font-size:14px}
+
+  /* EXPERIENCE */
+  .exp-row{display:flex;gap:18px;align-items:center;margin-bottom:18px;flex-wrap:wrap}
+  .exp-text{flex:1;min-width:260px;background:rgba(0,0,0,0.08);padding:14px;border-radius:10px}
+  .exp-text h3{margin:0 0 6px}
+  .exp-text small{color:rgba(255,255,255,0.72)}
+  .exp-illus{width:260px;flex-shrink:0}
+  .exp-illus img{width:100%;display:block;border-radius:10px;box-shadow:0 12px 30px rgba(0,0,0,0.35)}
+
+  /* EDUCATION */
+  .edu-wrap{position:relative;padding:28px;border-radius:12px;background:linear-gradient(180deg, rgba(0,0,0,0.03), rgba(0,0,0,0.01))}
+  .edu-line{position:absolute;left:50%;top:20px;bottom:20px;width:4px;background:rgba(255,255,255,0.12);transform:translateX(-50%);border-radius:3px}
+  .edu-item{width:44%;padding:12px;border-radius:10px;background:rgba(255,255,255,0.02);color:#fff;margin:16px 0;position:relative}
+  .edu-left{float:left;clear:both}
+  .edu-right{float:right}
+  .edu-item .dot{width:14px;height:14px;border-radius:50%;background:var(--accent);position:absolute;top:18px;right:-28px}
+  .edu-right .dot{left:-28px;right:auto}
+
+  /* PROJECTS */
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:12px}
+  .project-card{background:rgba(0,0,0,0.06);padding:12px;border-radius:10px;color:#fff}
+  .project-card img{width:100%;height:140px;object-fit:cover;border-radius:8px;margin-bottom:10px}
+
+  /* GET IN TOUCH */
+  .touch-row{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+  .touch-left{flex:1;color:#fff}
+  .touch-right{width:320px;flex-shrink:0}
+  .touch-right img{width:100%;border-radius:8px}
+
+  footer{padding:18px;text-align:center;color:rgba(255,255,255,0.9);margin-top:24px}
+
+  @media(max-width:900px){
+    .hero{flex-direction:column;text-align:center}
+    .hero-right{order:-1}
+    .edu-item,.edu-left,.edu-right{float:none;width:100%}
+    .edu-line{display:none}
+    .exp-illus{width:100%}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="title">Vishwa Shah | Portfolio</div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#tech">Tech</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#projects">Projects</a>
+    <a href="#touch">Get in Touch</a>
+  </nav>
+</header>
+
+<div class="wrap">
+
+ <div class="hero">
+  <div class="hero-left">
+    <h1>Hey there — I'm <span class="name">Vishwa Shah</span></h1>
+    <p><strong style="color:#fff">I'm into</strong> <span id="typed"></span></p>
+    <h3>I specialize in crafting seamless digital experiences through dynamic websites and applications.</h3>
+    <p>A passionate Computer Science student, constantly driven to improve my skills and turn ideas into impactful solutions.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="#touch">Let's Connect</a>
+      <a class="btn primary" href="VishwaShahResume.pdf" target="_blank" rel="noopener">View Resume</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <img src="https://i.ibb.co/JjjNdqD9/Hello.gif" alt="Hello" class="hero-img">
+  </div>
+</div>
+
+  <section id="about">
+    <h2>About</h2>
+    <div class="about">
+      <p>I'm a creative and curious Computer Science student who loves building interactive and user-friendly web solutions. I enjoy turning ideas into reality through elegant code and clean UI.</p>
+      <p>My main interests: <strong>Web Development, Graphic Designing, Machine Learning, Android Development, UI/UX Design.</strong></p>
+      <p>Right now I’m focused on improving full-stack skills, building practical ML models, and designing clean interfaces people enjoy using.</p>
+    </div>
+  </section>
+<section id="tech">
+  <h2>Tech Stack</h2>
+
+  <!-- FRONTEND -->
+  <div class="tech-group">
+    <h3>Frontend</h3>
+    <div class="tech-grid">
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"><div class="label">HTML5</div></div>
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"><div class="label">CSS3</div></div>
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"><div class="label">JavaScript</div></div>
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"><div class="label">React</div></div>
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"><div class="label">Bootstrap</div></div>
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg"><div class="label">Tailwind CSS</div></div>
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg"><div class="label">SASS</div></div>
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg"><div class="label">Next.js</div></div>
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg"><div class="label">Redux</div></div>
+    </div>
+  </div>
+
+  <!-- BACKEND -->
+  <div class="tech-group">
+    <h3>Backend</h3>
+    <div class="tech-grid">
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"><div class="label">Node.js</div></div>
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"><div class="label">Python</div></div>
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg"><div class="label">Flask</div></div>
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"><div class="label">Express.js</div></div>
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"><div class="label">Java</div></div>
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg"><div class="label">Django</div></div>
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"><div class="label">PHP</div></div>
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg"><div class="label">Spring Boot</div></div>
+    </div>
+  </div>
+
+  <!-- DATABASE -->
+  <div class="tech-group">
+    <h3>Database</h3>
+    <div class="tech-grid">
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"><div class="label">MySQL</div></div>
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"><div class="label">MongoDB</div></div>
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"><div class="label">Firebase</div></div>
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"><div class="label">PostgreSQL</div></div>
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg"><div class="label">SQLite</div></div>
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg"><div class="label">Redis</div></div>
+    </div>
+  </div>
+
+  <!-- MACHINE LEARNING -->
+  <div class="tech-group">
+    <h3>Machine Learning</h3>
+    <div class="tech-grid">
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg"><div class="label">NumPy</div></div>
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg"><div class="label">Pandas</div></div>
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikit-learn/scikit-learn-original.svg"><div class="label">scikit-learn</div></div>
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg"><div class="label">TensorFlow</div></div>
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg"><div class="label">PyTorch</div></div>
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matplotlib/matplotlib-original.svg"><div class="label">Matplotlib</div></div>
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/seaborn/seaborn-original.svg"><div class="label">Seaborn</div></div>
+    </div>
+  </div>
+
+  <!-- TOOLS & DESIGN -->
+  <div class="tech-group">
+    <h3>Tools & Design</h3>
+    <div class="tech-grid">
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"><div class="label">Git</div></div>
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"><div class="label">GitHub</div></div>
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"><div class="label">Figma</div></div>
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"><div class="label">VS Code</div></div>
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"><div class="label">Docker</div></div>
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg"><div class="label">Jupyter</div></div>
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg"><div class="label">Canva</div></div>
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/trello/trello-plain.svg"><div class="label">Trello</div></div>
+      <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/slack/slack-original.svg"><div class="label">Slack</div></div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- EXPERIENCE SECTION -->
+<section id="experience">
+  <h2>Experience</h2>
+
+  <div class="exp-row">
+    <div class="exp-text">
+      <h3>Web Development Intern - Code Craft</h3>
+      <small>August 2025</small>
+      <ul>
+        <li>Gained hands-on experience in HTML, CSS, JS, and responsive design.</li>
+        <li>Collaborated with developers to manage workflows using Git and GitHub.</li>
+        <li>Enhanced website performance and improved SEO optimization.</li>
+        <li>Worked with live clients to create interactive user interfaces.</li>
+        <li>Tested and deployed front-end projects on hosting platforms.</li>
+      </ul>
+    </div>
+    <div class="exp-illus">
+      <img src="https://i.ibb.co/qYHqgkM8/Resume-folder.gif" alt="Resume-folder" style="width:100%;border-radius:10px;">
+    </div>
+  </div>
+
+  <div class="exp-row">
+    <div class="exp-text">
+      <h3>Machine Learning Intern - Skillcraft Technology</h3>
+      <small>June 2025</small>
+      <ul>
+        <li>Developed ML models for classification and predictive analytics.</li>
+        <li>Used Python, Pandas, NumPy, and Scikit-learn to preprocess datasets.</li>
+        <li>Implemented visualization dashboards using Matplotlib and Seaborn.</li>
+        <li>Optimized model accuracy and reduced computation time by 20%.</li>
+        <li>Collaborated with data teams for real-world client analytics tasks.</li>
+      </ul>
+    </div>
+    <div class="exp-illus">
+      <img src="https://i.ibb.co/Kj1P0MxW/Resume.gif" alt="Resume" style="width:100%;border-radius:10px;">
+    </div>
+  </div>
+
+  <div class="exp-row">
+    <div class="exp-text">
+      <h3>Web Development Intern - Zidio Development</h3>
+      <small>March 2025</small>
+      <ul>
+        <li>Built responsive web apps using modern frameworks and UI libraries.</li>
+        <li>Worked closely with designers to enhance UI/UX flow and consistency.</li>
+        <li>Deployed sites using Firebase and version-controlled projects via Git.</li>
+        <li>Improved accessibility and page performance scores by 25%.</li>
+        <li>Led a mini team project that increased client engagement by 30%.</li>
+      </ul>
+    </div>
+    <div class="exp-illus">
+      <img src="https://i.ibb.co/HpHD1C3F/Low-code-development.gif" alt="Low-code-development" style="width:100%;border-radius:10px;">
+    </div>
+  </div>
+</section>
+
+
+<section id="education">
+    <h2>Education</h2>
+    <div class="edu-wrap">
+      <div class="edu-line" aria-hidden="true"></div>
+
+      <div class="edu-item edu-left">
+        <h3>Ambe Vidhyalaya</h3>
+        <p>2013 — 2023</p>
+        <div class="dot" aria-hidden="true"></div>
+      </div>
+<div class="edu-item edu-right">
+        <h3>Diploma in Computer Science — ITM (SLS) Baroda University</h3>
+        <p>2023 — Present</p>
+        <div class="dot" aria-hidden="true"></div>
+      </div>
+
+      <!-- add more items easily by duplicating .edu-item blocks -->
+      <div style="clear:both"></div>
+    </div>
+  </section>
+
+  <!-- PROJECTS SECTION -->
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="projects-grid" style="display:flex;justify-content:center;flex-wrap:wrap;gap:24px;margin-top:20px;">
+    
+    <div class="project-card" style="background:rgba(0,0,0,0.08);padding:20px;border-radius:16px;width:340px;text-align:center;box-shadow:0 8px 28px rgba(0,0,0,0.3);">
+      <div style="width:100%;overflow:hidden;border-radius:12px;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/32/Tic_tac_toe.svg" 
+             alt="Tic Tac Toe Game" 
+             style="width:100%;height:auto;border-radius:12px;object-fit:contain;">
+      </div>
+      <h4 style="margin:12px 0 8px;font-size:18px;">Tic Tac Toe Android App</h4>
+      <p style="color:rgba(255,255,255,0.92);font-size:15px;line-height:1.5;">
+        Two-player Android game built with Java & XML featuring win/draw detection and reset.<br>
+        <a href="https://github.com/VishwaShahS/Tic-Tac-Toe" target="_blank" style="color:var(--accent);font-weight:600;">View on GitHub</a>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+  <section id="touch">
+    <h2>Get in Touch</h2>
+    <div class="touch-row">
+      <div class="touch-left">
+        <p>Want to collaborate, ask a question, or just say hi? I’m open to internships, projects, and mentorships.</p>
+        <p>Email: <a href="mailto:vishwas8428@gmail.com" style="color:var(--accent)">vishwas8428@gmail.com</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/vishwa-shah-212016321/" target="_blank" style="color:var(--accent)">Vishwa Shah</a></p>
+        <p>GitHub: <a href="https://github.com/VishwaShahS" target="_blank" style="color:var(--accent)">github.com/VishwaShahS</a></p>
+      </div>
+      <div class="touch-right">
+        <img src="https://stories.freepiklabs.com/storage/33590/Code-Typing-bro-01.svg" alt="get in touch illustration" onerror="this.style.display='none'">
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>© 2025 Vishwa Shah</footer>
+
+<script>
+(function(){
+  const target = document.getElementById('typed');
+  const words = ["Web Development","Graphic Designing","Machine Learning","Android Development","UI/UX Design"];
+  let w=0,i=0,dir=1;const speed=90,pause=1200;
+  function tick(){
+    const word=words[w];
+    target.textContent=word.slice(0,i);
+    i+=dir;
+    if(i>word.length){dir=-1;setTimeout(tick,pause);return;}
+    if(i<0){dir=1;w=(w+1)%words.length;i=0;}
+    setTimeout(tick,dir===1?speed:speed/2);
+  }
+  setTimeout(tick,400);
+})();
+</script>
+
+</body>
+</html>
+
